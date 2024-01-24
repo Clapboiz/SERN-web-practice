@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 viewEngine(app);
 initWebRoutes(app);
 
-connectDB(app);
+connectDB();
 
 let port = process.env.PORT || 6969;
 //Neu chung ta quen khai bao port thi no se chay o port 6969
