@@ -1,3 +1,4 @@
+import { raw } from "body-parser";
 import db from "../models/index";
 import bcrypt from "bcrypt";
 
@@ -36,7 +37,21 @@ let hashUserPassword = (password) => {
   });
 };
 
+let getAllUsers = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let users = db.User.findAll({
+        raw: true,
+      });
+      resolve(users);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
 module.exports = {
   createUser: createUser,
   hashUserPassword: hashUserPassword,
+  getAllUsers: getAllUsers,
 };
